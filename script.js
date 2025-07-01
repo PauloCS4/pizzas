@@ -4,8 +4,6 @@ document.querySelector("#nombre").addEventListener("blur",salirNombre);
 document.querySelector("#btn-guardar").addEventListener("click",clickGuardar);
 document.querySelector("#btn-borrar").addEventListener("click",clickBorrar);
 
-
-
 /** Botones que agregan productos  */
 document.querySelector('#peperoni').addEventListener("click",clickPepe);
 document.querySelector('#carnes').addEventListener("click",clickCarnes);
@@ -18,6 +16,10 @@ document.querySelector('#pan').addEventListener("click",clickPan);
 document.querySelector('#alitas').addEventListener("click",clickAlitas);
 
 document.querySelector('#bebida').addEventListener("click",clickBebida);
+
+document.querySelector("#borrar-pedido").addEventListener("click",clickBorrarPedido);
+
+
 
 class Pedido{
     constructor(){
@@ -36,38 +38,75 @@ class Pedido{
 }
 
 alCargar();
-let pedidoActual = new Pedido();
+let pedidoActual=new Pedido();
+
+const pedidoAnterior = localStorage.getItem("pedido");
+if( pedidoAnterior){
+    pedidoActual = JSON.parse(pedidoAnterior);
+    console.log("Se recupero un pedido anterior");
+    imprimirPedido();
+}else{
+    console.log("Se usara un pedido nuevo");
+}
+
 
 function clickPepe(){
     pedidoActual.pepe++;
+    guardarPedido();
     imprimirPedido();
 }
 function clickCarnes(){
     pedidoActual.carnes++;
+    guardarPedido();
     imprimirPedido();
 }
 function clickEstaciones(){
     pedidoActual.estaciones++;
+    guardarPedido();
     imprimirPedido();
 }
 function clickSuprema(){
     pedidoActual.suprema++;
+    guardarPedido();
     imprimirPedido();
 }
 function clickBorde(){
     pedidoActual.borde++;
+    guardarPedido();
     imprimirPedido();
 }function clickPalitos(){
     pedidoActual.palitos++;
+    guardarPedido();
     imprimirPedido();
 }function clickPan(){
     pedidoActual.pan++;
+    guardarPedido();
     imprimirPedido();
 }function clickAlitas(){
     pedidoActual.alitas++;
+    guardarPedido();
     imprimirPedido();
 }function clickBebida(){
     pedidoActual.bebida++;
+    guardarPedido();
+    imprimirPedido();
+}
+
+function clickGuardarPedido(){
+    guardarPedido();
+}
+
+function guardarPedido(){
+    localStorage.setItem('pedido',JSON.stringify(pedidoActual));
+}
+
+function clickBorrarPedido(){
+    borrarPedido();
+}
+
+function borrarPedido(){
+    localStorage.removeItem('pedido');
+    pedidoActual= new Pedido();
     imprimirPedido();
 }
 
@@ -162,4 +201,6 @@ function clickGuardar(){
 function clickBorrar(){
     localStorage.removeItem('nombre');
     localStorage.removeItem('direccion');
+    document.getElementById("nombre").value="";
+    document.getElementById("direccion").value="";
 }

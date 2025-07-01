@@ -4,23 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizzas a domicilio</title>
+    <link rel="stylesheet" href="./estilo.css">
 
 </head>
 <body>
-    <h3>Cliente</h3>
-    <p id="datos-cliente"></p>
-
-    <label for="nombre">Nombre</label>
-    <input id="nombre" type="text">
-    <br>
-    <label for="direccion">Direccion</label>
-    <input id="direccion" type="text">
-    <br>
-    <button id="btn-guardar">Guardar datos</button>
-    <button id="btn-borrar">Borrar datos</button>
-
     
-
     <h4>Pizzas</h4>
 
     <label for="peperoni">Familiar Peperoni</label> 
@@ -63,13 +51,25 @@
 
     <label for="bebida">Bebida de litro y medio</label>
     <button id="bebida">Agregar por $2500</button>
-    <label id="cant-bebida" for="bebida"></label><br>
+    <label id="cant-bebida" for="bebida"></label>
     <br>
-
     
 
-    <h2>Mi pedido</h2>
+    <h3>Pedido:</h3>
     <P id="mi-pedido"></P>
+
+    <button id="borrar-pedido">Borrar pedido</button>
+
+    <h3>Entregar a:</h3>
+
+    <label for="nombre">Cliente</label>
+    <input id="nombre" type="text">
+    <br>
+    <label for="direccion">Direccion</label>
+    <input id="direccion" type="text">
+    <br>
+    <button id="btn-guardar">Guardar cliente</button>
+    <button id="btn-borrar">Borrar cliente</button>
 
 
     <script src="./script.js"></script>
