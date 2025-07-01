@@ -172,7 +172,7 @@ function imprimirPedido(){
     }
     if(pedidoActual.bebida){
         imprimirProductos += `${pedidoActual.bebida} Bebidas\n`;
-        total += pedidoActual.bebida * 3500; 
+        total += pedidoActual.bebida * 2500; 
     }
 
     imprimirProductos += "---\nTotal: $"+total;
