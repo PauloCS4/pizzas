@@ -1,3 +1,53 @@
 body{
     background-color: bisque;
 }
+
+
+h3{
+    margin: 5px 0px;
+    margin-top: 2px;
+}
+
+.menu{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.pizzas{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px black dotted;
+}
+
+.acompanamientos{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin: 5px;
+    padding: 5px;
+
+    border: 2px black dotted;
+}
+
+.bebidas{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin: 5px;
+    padding: 5px;
+
+    border: 2px black dotted;
+}
+
+
+.producto{
+    display: inline-block;
+    flex-wrap: nowrap;
+
+    white-space: nowrap;
+}
