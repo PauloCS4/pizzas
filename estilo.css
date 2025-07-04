@@ -19,7 +19,8 @@ h3{
     gap: 3px;
     margin: 5px;
     padding: 10px;
-    border: 2px black dotted;
+    border: 2px black solid;
+    border-radius: 10px;
 }
 
 .acompanamientos{
@@ -30,7 +31,8 @@ h3{
     margin: 5px;
     padding: 5px;
 
-    border: 2px black dotted;
+    border: 2px black solid;
+    border-radius: 10px;
 }
 
 .bebidas{
@@ -41,7 +43,9 @@ h3{
     margin: 5px;
     padding: 5px;
 
-    border: 2px black dotted;
+    border: 2px black solid;
+    border-radius: 10px;
+
 }
 
 
@@ -50,4 +54,50 @@ h3{
     flex-wrap: nowrap;
 
     white-space: nowrap;
+}
+
+.salida{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    
+}
+
+.pedido-actual{
+    
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    width: 320px;
+    
+    padding: 10px;
+    
+}
+
+.pedido-actual button{
+    width: 30%;
+
+}
+
+
+.cliente{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.total{
+    /*display: none;*/
+    padding: 10px;
+}
+
+#mi-pedido{
+    padding-left: 20px;
 }

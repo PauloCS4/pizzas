@@ -18,6 +18,7 @@ document.querySelector('#alitas').addEventListener("click",clickAlitas);
 document.querySelector('#bebida').addEventListener("click",clickBebida);
 
 document.querySelector("#borrar-pedido").addEventListener("click",clickBorrarPedido);
+document.querySelector('#comprar').addEventListener('click',clickComprar);
 
 
 
@@ -104,6 +105,17 @@ function clickBorrarPedido(){
     borrarPedido();
 }
 
+function clickComprar(){
+    borrarPedido();
+
+    //agregar la logica de comprar,luego imprimir boleta por consola
+    //Verificar que el pedido tenga prodctos agregados, usuario y direccion
+    console.log("Pedido confirmado, recibira su boleta en unos segundos.")
+    alert("¡Recibirá su pedido en menos de 30 minutos!");
+
+
+}
+
 function borrarPedido(){
     localStorage.removeItem('pedido');
     pedidoActual= new Pedido();
@@ -138,6 +150,8 @@ function alCargar(){
 function imprimirPedido(){
     let total=0;
     let imprimirProductos = "";
+
+
     if(pedidoActual.pepe){
         imprimirProductos += `${pedidoActual.pepe} Pizzas de Peperoni\n`;
         total += pedidoActual.pepe * 5500; 
@@ -175,11 +189,29 @@ function imprimirPedido(){
         total += pedidoActual.bebida * 2500; 
     }
 
-    imprimirProductos += "---\nTotal: $"+total;
 
+    // if( imprimirProductos === ""){
+    //     imprimirProductos= "Agregue un producto.";
+    // }
 
     const parrafo= document.getElementById("mi-pedido");
+    const total_a_pagar = document.querySelector("#total-a-pagar");
     parrafo.innerText= imprimirProductos;
+
+
+
+    //Actualizar el total en otro div
+
+    if(total > 0){
+
+        total_a_pagar.innerText= "$"+total;
+
+    }else{
+        total_a_pagar.innerText= "$0";
+    }
+
+    const div_pagar = document.querySelector(".total");    
+
 }
 
 

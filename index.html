@@ -4,19 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzas a domicilio</title>
+    <title>Pizzas de César</title>
     <link rel="stylesheet" href="./estilo.css">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
 
 </head>
 
 <body>
 
-    <h1>Pizzas del Cesar</h1>
-    <h2>Pedir aquí</h2>
-
-
+    <h1>Pizzas de César</h1>
     <div class="menu">
 
+        <div class="cliente" > 
+            <h3>Cliente:</h3>
+
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" placeholder="Nombre Apellido" type="text">
+            <br>
+            <label for="direccion">Direccion:</label>
+            <input id="direccion" placeholder="Direccion 123" type="text">
+            <br>
+            <button id="btn-guardar">Guardar</button>
+            <button id="btn-borrar">Borrar</button>
+        </div>
 
         <div class="pizzas">
             <h3>Pizzas</h3>
@@ -87,26 +97,37 @@
             </div>
 
         </div>
+        
 
     </div>
 
+    <div class="salida">
 
-    <h2>Pedido:</h2>
-    <P id="mi-pedido"></P>
+        
 
-    <button id="borrar-pedido">Borrar pedido</button>
+        <div class="pedido-actual">
+            <h2>Detalle:</h2>
+            
+            <P id="mi-pedido"></P>
 
-    <h3>Entregar a:</h3>
+            <div>
+                <button id="borrar-pedido">Eliminar</button>
+                <button id="comprar">Comprar</button>
+            </div>
+            
+            
+        </div>
 
-    <label for="nombre">Cliente</label>
-    <input id="nombre" type="text">
-    <br>
-    <label for="direccion">Direccion</label>
-    <input id="direccion" type="text">
-    <br>
-    <button id="btn-guardar">Guardar cliente</button>
-    <button id="btn-borrar">Borrar cliente</button>
+        <div class="total">
+            <h2>Monto total:</h2>
+            <p id="total-a-pagar">Agregue productos</p>
+           
+        </div>
 
+        
+        
+
+    </div>
 
     <script src="./script.js"></script>
 </body>
