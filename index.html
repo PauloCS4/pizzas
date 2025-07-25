@@ -4,130 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzas de César</title>
+    <title>Pizzas del César</title>
     <link rel="stylesheet" href="./estilo.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
 
 </head>
 
 <body>
+    <header>
+        <h1>Pizzas del César</h1>
+    </header>
+    <main>
 
-    <h1>Pizzas de César</h1>
-    <div class="menu">
+        <div class="pedido-general">
 
-        <div class="cliente" > 
-            <h3>Cliente:</h3>
-
-            <label for="nombre">Nombre:</label>
-            <input id="nombre" placeholder="Nombre Apellido" type="text">
-            <br>
-            <label for="direccion">Direccion:</label>
-            <input id="direccion" placeholder="Direccion 123" type="text">
-            <br>
-            <button id="btn-guardar">Guardar</button>
-            <button id="btn-borrar">Borrar</button>
-        </div>
-
-        <div class="pizzas">
-            <h3>Pizzas</h3>
-
-            <div class="producto">
-                <button id="peperoni">Agregar</button>
-                <label for="peperoni">Familiar Peperoni - $5500</label>
-
+            <div class="comprador">
+                <h3>Entregar a:</h3>
+                <label for="nombre-cliente">Nombre:</label>
+                <input id="nombre-cliente" placeholder="Alberto Bustos" type="text">
+                <br>
+                <label for="direccion-cliente">Direccion:</label>
+                <input id="direccion-cliente" placeholder="Las Banderas 114" type="text">
+                <br>
+                <button id="guardar-cliente">Guardar</button>
+                <button id="borrar-cliente">Borrar</button>
             </div>
 
-            <div class="producto">
-                <button id="carnes">Agregar</button>
-                <label for="carnes">Familiar Tres Carnes - $6500</label>
+            <div class="detalle-pedido">
+                <h3>Items del pedido:</h3>
+                <div class="el-pedido">
+                    <P id="su-pedido"></P>
+                </div>
+                
+            </div>        
 
-            </div>
-
-            <div class="producto">
-                <button id="estaciones">Agregar</button>
-                <label for="estaciones">Familiar Cuatro Estaciones - $7000</label>
-
-            </div>
-
-
-            <div class="producto">
-                <button id="suprema">Agregar</button>
-                <label for="suprema">Familiar Pizza Suprema - $9500</label>
-
-            </div>
-
-            <div class="producto">
-                <button id="borde">Agregar</button>
-                <label for="borde">Familiar Borde de Queso - $11000</label>
+            <div class="monto-final">
+                <h2>A pagar:</h2>
+                <p id="cifra-final">---</p>
+                <button id="descartar">Descartar</button>
+                <button id="confirmar">Comprar</button>
             </div>
 
         </div>
+        <!--fin .pedido-general -->
 
-        <!-- Este div es para que bebidas y acompañamiento compartan columna en el flex-->
-        <div class="no-pizzas">
+        <div class="productos">
 
-            <div class="acompanamientos">
-                <h3>Acompañamientos</h3>
+            <div class="pizzas">
+                <h3>Pizzas</h3>
 
                 <div class="producto">
-                    <button id="palitos">Agregar</button>
-                    <label for="palitos">Palitos de ajo - $3500 </label>
+                    <button id="peperoni">Agregar</button>
+                    <label for="peperoni">Familiar Peperoni - $5500</label>
+
                 </div>
 
                 <div class="producto">
-                    <button id="pan">Agregar</button>
-                    <label for="pan">Pan de quesos - $4500</label>
+                    <button id="carnes">Agregar</button>
+                    <label for="carnes">Familiar Tres Carnes - $6500</label>
+
                 </div>
 
                 <div class="producto">
-                    <button id="alitas">Agregar</button>
-                    <label for="alitas">Alitas de pollo - $4500</label>
+                    <button id="estaciones">Agregar</button>
+                    <label for="estaciones">Familiar Cuatro Estaciones - $7000</label>
+
                 </div>
 
-            </div>
-
-
-            <div class="bebidas">
 
                 <div class="producto">
-                    <h3>Bebidas</h3>
-                    <button id="bebida">Agregar</button>
-                    <label for="bebida">Bebida 2 Lts $2500</label>
+                    <button id="suprema">Agregar</button>
+                    <label for="suprema">Familiar Pizza Suprema - $9500</label>
+
                 </div>
+
+                <div class="producto">
+                    <button id="borde">Agregar</button>
+                    <label for="borde">Familiar Borde de Queso - $11000</label>
+                </div>
+
+            </div>
+            <!--pizzas-->
+            <div class="otros">
+                <div class="acompanamientos">
+                    <h3>Acompañamientos</h3>
+
+                    <div class="producto">
+                        <button id="palitos">Agregar</button>
+                        <label for="palitos">Palitos de ajo - $3500 </label>
+                    </div>
+
+                    <div class="producto">
+                        <button id="pan">Agregar</button>
+                        <label for="pan">Pan de quesos - $4500</label>
+                    </div>
+
+                    <div class="producto">
+                        <button id="alitas">Agregar</button>
+                        <label for="alitas">Alitas de pollo - $4500</label>
+                    </div>
+
+                </div>
+
+
+                <div class="bebidas">
+
+                    <div class="producto">
+                        <h3>Bebidas</h3>
+                        <button id="bebida">Agregar</button>
+                        <label for="bebida">Bebida 2 Lts $2500</label>
+                    </div>
+                </div>
+
             </div>
 
+
+
         </div>
-        
+        <!-- productos-->
 
-    </div>
 
-    <div class="salida">
+    </main>
 
-        
-
-        <div class="pedido-actual">
-            <h2>Detalle:</h2>
-            
-            <P id="mi-pedido"></P>
-
-            <div>
-                <button id="borrar-pedido">Eliminar</button>
-                <button id="comprar">Comprar</button>
-            </div>
-            
-            
-        </div>
-
-        <div class="total">
-            <h2>Monto total:</h2>
-            <p id="total-a-pagar">Agregue productos</p>
-           
-        </div>
-
-        
-        
-
-    </div>
 
     <script src="./script.js"></script>
 </body>

@@ -1,3 +1,53 @@
+.pedido-general{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.comprador{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.detalle-pedido{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 10px;
+    
+
+}
+.el-pedido{
+    width: 350px;
+}
+
+.monto-final{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.productos{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+/**********************************/
+/*** Aqui empieza lo antiguo **/
+/******************************/
 body{
     background-color: bisque;
 }
