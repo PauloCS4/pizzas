@@ -3,27 +3,24 @@ const campo_nombre_cliente = document.querySelector("#nombre-cliente");
 const campo_direccion_cliente = document.querySelector("#direccion-cliente");
 //botones del cliente.
 const btn_guardar_cliente = document.querySelector("#guardar-cliente");
-const btn_borrar_ciente = document.querySelector("#borrar-cliente");
+const btn_borrar_cliente = document.querySelector("#borrar-cliente");
 //eventos para botones del cliente
 btn_guardar_cliente.addEventListener("click",fn_click_guardar_cliente);
-//botones para agregar productos
+btn_borrar_cliente.addEventListener("click",fn_borrar_cliente);
+
+//elementos botones productos
 const btn_agregar_pepperoni = document.querySelector("#btn-pepperoni");
 const btn_agregar_tres_carnes= document.querySelector("#btn-tres-carnes");
-
 const btn_cuatro_estaciones= document.querySelector("#btn-cuatro-estaciones");
 const btn_suprema = document.querySelector("#btn-suprema");
 const btn_borde_queso = document.querySelector("#btn-borde-queso");
-
 const btn_palitos  = document.querySelector("#btn-palitos");
 const btn_pan_queso = document.querySelector("#btn-pan-queso");
 const btn_alitas = document.querySelector("#btn-alitas");
 const btn_bebida = document.querySelector("#btn-bebida");
-
-
-//eventos para botones de productos
+//eventos botones de productos
 btn_agregar_pepperoni.addEventListener("click",fn_agregar_pepperoni);
 btn_agregar_tres_carnes.addEventListener("click",fn_agregar_tres_carnes);
-
 btn_cuatro_estaciones.addEventListener("click",fn_agregar_cuatro_estaciones);
 btn_suprema.addEventListener("click",fn_agregar_suprema);
 btn_borde_queso.addEventListener("click",fn_agregar_borde_queso);
@@ -31,10 +28,15 @@ btn_palitos.addEventListener("click",fn_agregar_palitos);
 btn_pan_queso.addEventListener("click",fn_agregar_pan_queso);
 btn_alitas.addEventListener("click",fn_agregar_alitas);
 btn_bebida.addEventListener("click",fn_agregar_bebida);
-
-//Elementos que muestran informacion
+//Elementos para mostrar pedido
 const parrafo_detalle_pedido = document.querySelector("#parrafo-detalle-pedido");
 const parrafo_monto_a_pagar =document.querySelector("#monto-a-pagar");
+
+const btn_confirmar_compra = document.querySelector("#confirmar-compra");
+const btn_limpiar_pedido = document.querySelector("#limpiar-pedido");
+
+btn_confirmar_compra.addEventListener("click",fn_confirmar_compra);
+btn_limpiar_pedido.addEventListener('click',fn_limpiar_pedido);
 
 
 
@@ -62,16 +64,43 @@ class detallePedido{
     }
 }
 
-//Creacion de pedido desde cero
-let pedido_actual = new pedido();
+// Inicio
+let pedido_actual;
+let pedido_anterior = localStorage.getItem("pedidoGuardado");
+if( pedido_anterior){
+    pedido_actual = JSON.parse(pedido_anterior);
+    calcular_monto();
+    mostrar_detalle();
+    mostrar_cliente();
+}else{
+    pedido_actual= new pedido();
+    
+}
 
+function fn_limpiar_pedido(){
+    pedido_actual.detalle = new detallePedido();
+    calcular_monto();
+    mostrar_detalle();
+    fn_click_guardar_cliente();
 
+}
 
-
-//funciones de los botones
 function fn_click_guardar_cliente(){
     pedido_actual.cliente = campo_nombre_cliente.value;
     pedido_actual.direccion = campo_direccion_cliente.value;
+    localStorage.setItem('pedidoGuardado',JSON.stringify(pedido_actual));
+
+}
+
+function fn_borrar_cliente(){
+    localStorage.removeItem('pedidoGuardado');
+    pedido_actual= new pedido();
+    calcular_monto();
+    mostrar_detalle();
+    mostrar_cliente();
+}
+
+function fn_confirmar_compra(){
 
 }
 
@@ -175,6 +204,10 @@ function mostrar_detalle(){
 
 }
 
+function mostrar_cliente(){
+    campo_nombre_cliente.value= pedido_actual.cliente;
+    campo_direccion_cliente.value = pedido_actual.direccion;
+}
 
 function calcular_monto(){
     let monto_total = 0;
