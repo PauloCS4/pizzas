@@ -98,6 +98,8 @@ function fn_borrar_cliente(){
     calcular_monto();
     mostrar_detalle();
     mostrar_cliente();
+    campo_nombre_cliente.value="";
+    campo_direccion_cliente.value="";
 }
 
 function fn_confirmar_compra(){
