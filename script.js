@@ -81,14 +81,15 @@ function fn_limpiar_pedido(){
     pedido_actual.detalle = new detallePedido();
     calcular_monto();
     mostrar_detalle();
+    notificar_vaciar_carrito();
     fn_click_guardar_cliente();
-
 }
 
 function fn_click_guardar_cliente(){
     pedido_actual.cliente = campo_nombre_cliente.value;
     pedido_actual.direccion = campo_direccion_cliente.value;
     localStorage.setItem('pedidoGuardado',JSON.stringify(pedido_actual));
+    notificar_cambios_guardados();
 
 }
 
@@ -100,6 +101,7 @@ function fn_borrar_cliente(){
     mostrar_cliente();
     campo_nombre_cliente.value="";
     campo_direccion_cliente.value="";
+    notificar_borrar_cliente();
 }
 
 function fn_confirmar_compra(){
@@ -110,54 +112,63 @@ function fn_agregar_pepperoni(){
     pedido_actual.detalle.pepperoni++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pizza de pepperoni");
 
 }
 function fn_agregar_tres_carnes(){
     pedido_actual.detalle.trescarnes++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pizza de 3 carnes");
 }
 
 function fn_agregar_cuatro_estaciones(){
     pedido_actual.detalle.cuatroestaciones++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pizza de 4 estaciones");
 }
 
 function fn_agregar_suprema(){
     pedido_actual.detalle.suprema++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pizza suprema");
 }
 
 function fn_agregar_borde_queso(){
     pedido_actual.detalle.bordequeso++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pizza con bordes de queso");
 }
 
 function fn_agregar_palitos(){
     pedido_actual.detalle.palitosdeajo++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Palitos de ajo");
 }
 
 function fn_agregar_pan_queso(){
     pedido_actual.detalle.pandequeso++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Pan de 4 quesos");
 }
 
 function fn_agregar_alitas(){
     pedido_actual.detalle.alitasbbq++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Alitas Babeque");
 }
 
 function fn_agregar_bebida(){
     pedido_actual.detalle.bebida++;
     calcular_monto();
     mostrar_detalle();
+    notificar_agregado("Bebida de 2 lts");
 }
 
 function mostrar_detalle(){
@@ -227,5 +238,66 @@ function calcular_monto(){
     
     pedido_actual.monto= monto_total;
     return monto_total;
+
+}
+
+
+/* Mensajes toast */
+function notificar_agregado( nombreProducto){
+    Toastify({
+        text: `Se agrego ${nombreProducto} a su pedido`,
+        gravity: "top",
+        position: "right",
+        duration : 2000,
+        style: {
+            background: "linear-gradient(to right, #133a83ff, #ad3dc9ff)",
+            color: "white",
+            fontWeight: "bold",
+        }
+    }).showToast();
+}
+
+function notificar_vaciar_carrito(){
+    Toastify({
+        text: "Se vacio el pedido",
+        gravity: "top",
+        position: "right",
+        duration : 2000,
+        style: {
+            background: "linear-gradient(to right, #9800b0ff, #fc6363ff)",
+            color: "white",
+            fontWeight: "bold",
+        }
+    }).showToast();
+}
+
+function notificar_cambios_guardados(){
+
+    Toastify({
+        text: "Se guardaron los cambios.",
+        gravity: "top",
+        position: "right",
+        duration : 2000,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+            color: "white",
+            fontWeight: "bold",
+        }
+    }).showToast();
+}
+
+function notificar_borrar_cliente(){
+
+    Toastify({
+        text: "Se eliminaron sus datos del pedido.",
+        gravity: "top",
+        position: "right",
+        duration : 2000,
+        style: {
+            background: "linear-gradient(to right, #361348ff, #c93d60ff)",
+            color: "white",
+            fontWeight: "bold",
+        }
+    }).showToast();
 
 }
