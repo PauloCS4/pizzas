@@ -8,6 +8,9 @@ const btn_borrar_cliente = document.querySelector("#borrar-cliente");
 btn_guardar_cliente.addEventListener("click", fn_click_guardar_cliente);
 btn_borrar_cliente.addEventListener("click", fn_borrar_cliente);
 
+document.querySelector("#nombre-cliente").addEventListener("blur",fn_click_guardar_cliente);
+document.querySelector("#direccion-cliente").addEventListener("blur",fn_click_guardar_cliente);
+
 //elementos botones productos
 const btn_agregar_pepperoni = document.querySelector("#btn-pepperoni");
 const btn_agregar_tres_carnes = document.querySelector("#btn-tres-carnes");
@@ -112,15 +115,30 @@ function borrar_detalles(){
 
 function fn_confirmar_compra() {
 
-    if(pedido_actual.monto > 0){
-        mostrar_confirmacion();
+    if ( pedido_actual.cliente && pedido_actual.direccion ){
+
+        if(pedido_actual.monto > 0){
+            mostrar_confirmacion();
+        }else{
+            Swal.fire({
+            icon: "error",
+            title: "Su pedido está vacío",
+            text: "Agregue lo que desee de nuestro menú",
+            });
+        }
+
     }else{
+
         Swal.fire({
-        icon: "error",
-        title: "Su pedido está vacío",
-        text: "Agregue lo que desee de nuestro menú",
-        });
+            icon: "error",
+            title: "Destinatario sin definir",
+            text: "Agregue su nombre y dirección",
+            });
+
     }
+
+
+    
 }
 
 function fn_agregar_pepperoni() {
@@ -313,7 +331,7 @@ function notificar_cambios_guardados() {
 function notificar_borrar_cliente() {
 
     Toastify({
-        text: "Se eliminaron sus datos del pedido.",
+        text: "Se eliminaron datos del destinatario.",
         gravity: "top",
         position: "right",
         duration: 2000,
