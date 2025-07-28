@@ -7,7 +7,7 @@ const btn_borrar_cliente = document.querySelector("#borrar-cliente");
 //eventos para botones del cliente
 btn_guardar_cliente.addEventListener("click", fn_click_guardar_cliente);
 btn_borrar_cliente.addEventListener("click", fn_borrar_cliente);
-
+// Eventos desenfoque del cliente
 document.querySelector("#nombre-cliente").addEventListener("blur",fn_click_guardar_cliente);
 document.querySelector("#direccion-cliente").addEventListener("blur",fn_click_guardar_cliente);
 
@@ -34,15 +34,14 @@ btn_bebida.addEventListener("click", fn_agregar_bebida);
 //Elementos para mostrar pedido
 const parrafo_detalle_pedido = document.querySelector("#parrafo-detalle-pedido");
 const parrafo_monto_a_pagar = document.querySelector("#monto-a-pagar");
-
+//Botones de comprar
 const btn_confirmar_compra = document.querySelector("#confirmar-compra");
 const btn_limpiar_pedido = document.querySelector("#limpiar-pedido");
-
+//Eventos de comprar
 btn_confirmar_compra.addEventListener("click", fn_confirmar_compra);
 btn_limpiar_pedido.addEventListener('click', fn_limpiar_pedido);
 
-
-
+//Definicion de objetos
 class pedido {
     constructor(cliente, direccion) {
         this.cliente = cliente;
@@ -67,9 +66,10 @@ class detallePedido {
     }
 }
 
-// Inicio
+// Ejecución del script
 let pedido_actual;
 let pedido_anterior = localStorage.getItem("pedidoGuardado");
+
 if (pedido_anterior) {
     pedido_actual = JSON.parse(pedido_anterior);
     calcular_monto();
@@ -194,7 +194,7 @@ function fn_agregar_alitas() {
     pedido_actual.detalle.alitasbbq++;
     calcular_monto();
     mostrar_detalle();
-    notificar_agregado("Alitas Babeque");
+    notificar_agregado("Alitas barbeque");
 }
 
 function fn_agregar_bebida() {
@@ -284,7 +284,7 @@ function calcular_monto() {
 }
 
 
-/* Mensajes toast */
+/* Notificaciones mediate toastify */
 function notificar_agregado(nombreProducto) {
     Toastify({
         text: `Se agrego ${nombreProducto} a su pedido`,
@@ -384,3 +384,24 @@ function mostrar_confirmacion() {
     borrar_detalles();
     notificar_final();
 }
+
+// Fetch de temperatura en la sucursal de santiago.
+const url_personal_gratis = 'https://www.meteosource.com/api/v1/free/point?place_id=santiago&sections=all&timezone=UTC&language=en&units=metric&key=1vmeeaory4tmn6u93y4ckdq4cfoyds92g7iyfm09'
+fetch(url_personal_gratis)
+    .then( respuesta => {
+        return respuesta.json();
+    })
+    .then( datos => {
+        //console.log(`Temperatura en Santiago: ${datos.current.temperature}°C`);
+        mostrarClima( datos.current.temperature  );
+    } )
+    .catch( error => {
+        console.error("Hubo un problema en el fetch", error);
+    })
+
+function mostrarClima(temperatura){
+    const parrafo_clima = document.querySelector("#parrafo-clima");
+    parrafo_clima.innerText = `Santiago: ${temperatura}°C`;
+}
+
+
