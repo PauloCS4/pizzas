@@ -392,7 +392,7 @@ fetch(url_personal_gratis)
         return respuesta.json();
     })
     .then( datos => {
-        //console.log(`Temperatura en Santiago: ${datos.current.temperature}°C`);
+        //console.log("fetch realizado")
         mostrarClima( datos.current.temperature  );
     } )
     .catch( error => {

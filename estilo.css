@@ -8,7 +8,6 @@ h3{
 }
 
 
-
 .pedido-general{
     display: flex;
     flex-wrap: nowrap;
@@ -37,7 +36,7 @@ h3{
 
 }
 .el-pedido{
-    width: 350px;
+    width: 300px;
 }
 
 .monto-final{
@@ -117,4 +116,8 @@ h3{
 
     border: 2px black solid;
     border-radius: 10px;
+}
+
+#cajas-de-pizzas{
+    width: 250px;
 }
